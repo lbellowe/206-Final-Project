@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="description" content="">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16" />
+  <link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.css'>
+<link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css'>
+<link rel='stylesheet' href='/resources/page.css?1666379876'>
+  <title>September Average Weather in Each U.S. State</title>
+</head>
+<body>
+  <div class="page city-comparison-page">
+    <div class="desktop">
+      <nav class="navbar navbar-dark bg-dark">
+        <div class="container">
+          <a class="navbar-brand" href="/">Extreme Weather Watch</a>
+          <div class="d-none d-md-block">
+            <button id="btn-search" class="btn btn-sm btn-success"><i class="fa fa-search"></i> Search</button>
+            <button id='btn-units' class='btn btn-sm btn-primary'>Units: °F</button>
+          </div>
+          <div class="d-md-none">
+            <button id="btn-search" class="btn btn-sm btn-success"><i class="fa fa-search"></i></button>
+            <button id='btn-units' class='btn btn-sm btn-primary'>°F</button>
+          </div>
+        </div>
+      </nav>
+      <div class="container content">
+        <div class="city-comparison-content">
+          <div class="desktop">
+            
+            <h1>September Average Weather in Each U.S. State</h1>
+<div class=''>
+  This page compares the average temperature and precipitation in September in all fifty of the United States.  It is based on the average temperature over the entire territory of the state between 1991–2020.
+</div>
+<div class='mt-3'>
+  Select month:     <select class='form-control url-selector' style='display:inline-block; width: unset;'>
+      <option value='/us-state-averages' >Entire Year</option>\n<option value='/us-state-averages/month-january' >January</option>\n<option value='/us-state-averages/month-february' >February</option>\n<option value='/us-state-averages/month-march' >March</option>\n<option value='/us-state-averages/month-april' >April</option>\n<option value='/us-state-averages/month-may' >May</option>\n<option value='/us-state-averages/month-june' >June</option>\n<option value='/us-state-averages/month-july' >July</option>\n<option value='/us-state-averages/month-august' >August</option>\n<option value='/us-state-averages/month-september' selected>September</option>\n<option value='/us-state-averages/month-october' >October</option>\n<option value='/us-state-averages/month-november' >November</option>\n<option value='/us-state-averages/month-december' >December</option>
+    </select>
+</div>
+<div class='mt-4 fs-14'>
+  * Click column headers to sort.
+</div>
+<div class='mt-2 table-responsive'>
+      <table class='bordered-table sort-table'>
+      <thead>
+        <tr>
+          <th class='text-center sort-header' rowspan='2' data-sortcol='0' data-sorttype='string'>City</th>
+          <th class='text-center sort-header' data-sorttype='num' data-sortcol='1'>High <span class='fs-13'>(°F)</span></th>
+          <th class='text-center sort-header' data-sorttype='num' data-sortcol='2'>Low <span class='fs-13'>(°F)</span></th>
+          <th class='text-center sort-header' data-sorttype='num' data-sortcol='3'>Precipitation <span class='fs-13'>(in)</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+<td><a href='/states/alabama/month-september'>Alabama</a></td>
+<td class='temp80 text-center'>86.0</td>
+<td class='temp60 text-center'>63.6</td>
+<td class='text-center'>4.1</td>
+</tr>
+<tr>
+<td><a href='/states/alaska/month-september'>Alaska</a></td>
+<td class='temp40 text-center'>48.3</td>
+<td class='temp30 text-center'>34.5</td>
+<td class='text-center'>5.0</td>
+</tr>
+<tr>
+<td><a href='/states/arizona/month-september'>Arizona</a></td>
+<td class='temp80 text-center'>87.9</td>
+<td class='temp50 text-center'>59.2</td>
+<td class='text-center'>1.2</td>
+</tr>
+<tr>
+<td><a href='/states/arkansas/month-september'>Arkansas</a></td>
+<td class='temp80 text-center'>84.5</td>
+<td class='temp60 text-center'>61.5</td>
+<td class='text-center'>3.7</td>
+</tr>
+<tr>
+<td><a href='/states/california/month-september'>California</a></td>
+<td class='temp80 text-center'>85.2</td>
+<td class='temp50 text-center'>55.9</td>
+<td class='text-center'>0.3</td>
+</tr>
+<tr>
+<td><a href='/states/colorado/month-september'>Colorado</a></td>
+<td class='temp70 text-center'>73.6</td>
+<td class='temp40 text-center'>44.2</td>
+<td class='text-center'>1.5</td>
+</tr>
+<tr>
+<td><a href='/states/connecticut/month-september'>Connecticut</a></td>
+<td class='temp70 text-center'>73.9</td>
+<td class='temp50 text-center'>52.9</td>
+<td class='text-center'>4.4</td>
+</tr>
+<tr>
+<td><a href='/states/delaware/month-september'>Delaware</a></td>
+<td class='temp70 text-center'>79.0</td>
+<td class='temp50 text-center'>59.1</td>
+<td class='text-center'>4.2</td>
+</tr>
+<tr>
+<td><a href='/states/florida/month-september'>Florida</a></td>
+<td class='temp80 text-center'>89.0</td>
+<td class='temp70 text-center'>71.0</td>
+<td class='text-center'>6.5</td>
+</tr>
+<tr>
+<td><a href='/states/georgia/month-september'>Georgia</a></td>
+<td class='temp80 text-center'>85.4</td>
+<td class='temp60 text-center'>64.1</td>
+<td class='text-center'>4.1</td>
+</tr>
+<tr>
+<td><a href='/states/hawaii/month-september'>Hawaii</a> <sup><a href='#footnote1'>[1]</a></sup></td>
+<td class='temp80 text-center'>83.8</td>
+<td class='temp60 text-center'>69.8</td>
+<td class='text-center'>2.8</td>
+</tr>
+<tr>
+<td><a href='/states/idaho/month-september'>Idaho</a></td>
+<td class='temp70 text-center'>71.2</td>
+<td class='temp40 text-center'>41.6</td>
+<td class='text-center'>1.1</td>
+</tr>
+<tr>
+<td><a href='/states/illinois/month-september'>Illinois</a></td>
+<td class='temp70 text-center'>78.5</td>
+<td class='temp50 text-center'>55.0</td>
+<td class='text-center'>3.4</td>
+</tr>
+<tr>
+<td><a href='/states/indiana/month-september'>Indiana</a></td>
+<td class='temp70 text-center'>77.9</td>
+<td class='temp50 text-center'>54.1</td>
+<td class='text-center'>3.3</td>
+</tr>
+<tr>
+<td><a href='/states/iowa/month-september'>Iowa</a></td>
+<td class='temp70 text-center'>75.4</td>
+<td class='temp50 text-center'>51.9</td>
+<td class='text-center'>3.5</td>
+</tr>
+<tr>
+<td><a href='/states/kansas/month-september'>Kansas</a></td>
+<td class='temp80 text-center'>81.9</td>
+<td class='temp50 text-center'>55.8</td>
+<td class='text-center'>2.5</td>
+</tr>
+<tr>
+<td><a href='/states/kentucky/month-september'>Kentucky</a></td>
+<td class='temp80 text-center'>80.7</td>
+<td class='temp50 text-center'>57.0</td>
+<td class='text-center'>3.6</td>
+</tr>
+<tr>
+<td><a href='/states/louisiana/month-september'>Louisiana</a></td>
+<td class='temp80 text-center'>88.2</td>
+<td class='temp60 text-center'>67.4</td>
+<td class='text-center'>4.5</td>
+</tr>
+<tr>
+<td><a href='/states/maine/month-september'>Maine</a></td>
+<td class='temp60 text-center'>68.0</td>
+<td class='temp40 text-center'>45.8</td>
+<td class='text-center'>3.7</td>
+</tr>
+<tr>
+<td><a href='/states/maryland/month-september'>Maryland</a></td>
+<td class='temp70 text-center'>78.4</td>
+<td class='temp50 text-center'>58.1</td>
+<td class='text-center'>4.3</td>
+</tr>
+<tr>
+<td><a href='/states/massachusetts/month-september'>Massachusetts</a></td>
+<td class='temp70 text-center'>73.0</td>
+<td class='temp50 text-center'>51.7</td>
+<td class='text-center'>4.2</td>
+</tr>
+<tr>
+<td><a href='/states/michigan/month-september'>Michigan</a></td>
+<td class='temp70 text-center'>71.1</td>
+<td class='temp40 text-center'>48.8</td>
+<td class='text-center'>3.2</td>
+</tr>
+<tr>
+<td><a href='/states/minnesota/month-september'>Minnesota</a></td>
+<td class='temp60 text-center'>69.8</td>
+<td class='temp40 text-center'>47.4</td>
+<td class='text-center'>3.1</td>
+</tr>
+<tr>
+<td><a href='/states/mississippi/month-september'>Mississippi</a></td>
+<td class='temp80 text-center'>86.8</td>
+<td class='temp60 text-center'>64.1</td>
+<td class='text-center'>3.8</td>
+</tr>
+<tr>
+<td><a href='/states/missouri/month-september'>Missouri</a></td>
+<td class='temp70 text-center'>79.8</td>
+<td class='temp50 text-center'>56.6</td>
+<td class='text-center'>3.9</td>
+</tr>
+<tr>
+<td><a href='/states/montana/month-september'>Montana</a></td>
+<td class='temp60 text-center'>69.9</td>
+<td class='temp40 text-center'>41.5</td>
+<td class='text-center'>1.4</td>
+</tr>
+<tr>
+<td><a href='/states/nebraska/month-september'>Nebraska</a></td>
+<td class='temp70 text-center'>77.6</td>
+<td class='temp40 text-center'>49.9</td>
+<td class='text-center'>2.1</td>
+</tr>
+<tr>
+<td><a href='/states/nevada/month-september'>Nevada</a></td>
+<td class='temp70 text-center'>79.4</td>
+<td class='temp40 text-center'>47.6</td>
+<td class='text-center'>0.5</td>
+</tr>
+<tr>
+<td><a href='/states/new-hampshire/month-september'>New Hampshire</a></td>
+<td class='temp70 text-center'>70.0</td>
+<td class='temp40 text-center'>46.8</td>
+<td class='text-center'>4.0</td>
+</tr>
+<tr>
+<td><a href='/states/new-jersey/month-september'>New Jersey</a></td>
+<td class='temp70 text-center'>77.2</td>
+<td class='temp50 text-center'>56.6</td>
+<td class='text-center'>4.2</td>
+</tr>
+<tr>
+<td><a href='/states/new-mexico/month-september'>New Mexico</a></td>
+<td class='temp80 text-center'>80.4</td>
+<td class='temp50 text-center'>51.1</td>
+<td class='text-center'>1.8</td>
+</tr>
+<tr>
+<td><a href='/states/new-york/month-september'>New York</a></td>
+<td class='temp70 text-center'>71.1</td>
+<td class='temp40 text-center'>49.7</td>
+<td class='text-center'>4.0</td>
+</tr>
+<tr>
+<td><a href='/states/north-carolina/month-september'>North Carolina</a></td>
+<td class='temp80 text-center'>81.0</td>
+<td class='temp60 text-center'>60.6</td>
+<td class='text-center'>5.3</td>
+</tr>
+<tr>
+<td><a href='/states/north-dakota/month-september'>North Dakota</a></td>
+<td class='temp70 text-center'>71.1</td>
+<td class='temp40 text-center'>44.7</td>
+<td class='text-center'>1.9</td>
+</tr>
+<tr>
+<td><a href='/states/ohio/month-september'>Ohio</a></td>
+<td class='temp70 text-center'>76.6</td>
+<td class='temp50 text-center'>53.6</td>
+<td class='text-center'>3.3</td>
+</tr>
+<tr>
+<td><a href='/states/oklahoma/month-september'>Oklahoma</a></td>
+<td class='temp80 text-center'>85.1</td>
+<td class='temp60 text-center'>60.7</td>
+<td class='text-center'>3.3</td>
+</tr>
+<tr>
+<td><a href='/states/oregon/month-september'>Oregon</a></td>
+<td class='temp70 text-center'>74.1</td>
+<td class='temp40 text-center'>44.3</td>
+<td class='text-center'>1.0</td>
+</tr>
+<tr>
+<td><a href='/states/pennsylvania/month-september'>Pennsylvania</a></td>
+<td class='temp70 text-center'>73.8</td>
+<td class='temp50 text-center'>51.7</td>
+<td class='text-center'>4.3</td>
+</tr>
+<tr>
+<td><a href='/states/rhode-island/month-september'>Rhode Island</a></td>
+<td class='temp70 text-center'>73.8</td>
+<td class='temp50 text-center'>54.2</td>
+<td class='text-center'>4.1</td>
+</tr>
+<tr>
+<td><a href='/states/south-carolina/month-september'>South Carolina</a></td>
+<td class='temp80 text-center'>84.5</td>
+<td class='temp60 text-center'>63.9</td>
+<td class='text-center'>4.5</td>
+</tr>
+<tr>
+<td><a href='/states/south-dakota/month-september'>South Dakota</a></td>
+<td class='temp70 text-center'>75.2</td>
+<td class='temp40 text-center'>47.8</td>
+<td class='text-center'>1.9</td>
+</tr>
+<tr>
+<td><a href='/states/tennessee/month-september'>Tennessee</a></td>
+<td class='temp80 text-center'>82.0</td>
+<td class='temp50 text-center'>58.8</td>
+<td class='text-center'>3.9</td>
+</tr>
+<tr>
+<td><a href='/states/texas/month-september'>Texas</a></td>
+<td class='temp80 text-center'>88.2</td>
+<td class='temp60 text-center'>64.4</td>
+<td class='text-center'>3.1</td>
+</tr>
+<tr>
+<td><a href='/states/utah/month-september'>Utah</a></td>
+<td class='temp70 text-center'>76.7</td>
+<td class='temp40 text-center'>47.8</td>
+<td class='text-center'>1.2</td>
+</tr>
+<tr>
+<td><a href='/states/vermont/month-september'>Vermont</a></td>
+<td class='temp60 text-center'>69.0</td>
+<td class='temp40 text-center'>46.6</td>
+<td class='text-center'>3.9</td>
+</tr>
+<tr>
+<td><a href='/states/virginia/month-september'>Virginia</a></td>
+<td class='temp70 text-center'>78.6</td>
+<td class='temp50 text-center'>57.2</td>
+<td class='text-center'>4.4</td>
+</tr>
+<tr>
+<td><a href='/states/washington/month-september'>Washington</a></td>
+<td class='temp70 text-center'>70.8</td>
+<td class='temp40 text-center'>46.1</td>
+<td class='text-center'>1.7</td>
+</tr>
+<tr>
+<td><a href='/states/west-virginia/month-september'>West Virginia</a></td>
+<td class='temp70 text-center'>76.5</td>
+<td class='temp50 text-center'>53.6</td>
+<td class='text-center'>3.7</td>
+</tr>
+<tr>
+<td><a href='/states/wisconsin/month-september'>Wisconsin</a></td>
+<td class='temp70 text-center'>70.6</td>
+<td class='temp40 text-center'>48.4</td>
+<td class='text-center'>3.6</td>
+</tr>
+<tr>
+<td><a href='/states/wyoming/month-september'>Wyoming</a></td>
+<td class='temp70 text-center'>70.3</td>
+<td class='temp40 text-center'>40.4</td>
+<td class='text-center'>1.3</td>
+</tr>
+      </tbody>
+    </table>
+</div>
+
+<div class='fs-14 mt-5'>
+  <a name='footnote1'>
+  1. Data for all states except Hawaii is calculated by the NOAA.  For Hawaii, the number represents the average of 5 locations: Honolulu, Hilo, Molokai Airport, Lihue, and Kula Hospital at an elevation of 944 meters in Maui.
+</div>
+            
+          </div>
+        </div>
+      </div>
+      <div class="footer">
+        © H Brothers Inc, 2021–2022
+        <div class="mt-2">
+          <a href="/contact">Contact us</a> | <a href="/privacy">Privacy policy</a>
+
+        </div>
+      </div>
+      <div id="overlay"></div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    var _page = {"pageType":"us-state-averages","units":"F","data":{}};
+    var _pageScript = function() {
+      
+    }
+  </script>
+  <script type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+<script type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js'></script>
+<script type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/babel-core/5.6.15/browser-polyfill.min.js'></script>
+<script type='text/javascript' src='/resources/page.js?1666379876'></script>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-203605896-1"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-203605896-1');
+      </script>
+</body>
+</html>

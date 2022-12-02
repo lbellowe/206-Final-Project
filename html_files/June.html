@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="description" content="">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16" />
+  <link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.css'>
+<link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css'>
+<link rel='stylesheet' href='/resources/page.css?1666379876'>
+  <title>June Average Weather in Each U.S. State</title>
+</head>
+<body>
+  <div class="page city-comparison-page">
+    <div class="desktop">
+      <nav class="navbar navbar-dark bg-dark">
+        <div class="container">
+          <a class="navbar-brand" href="/">Extreme Weather Watch</a>
+          <div class="d-none d-md-block">
+            <button id="btn-search" class="btn btn-sm btn-success"><i class="fa fa-search"></i> Search</button>
+            <button id='btn-units' class='btn btn-sm btn-primary'>Units: °F</button>
+          </div>
+          <div class="d-md-none">
+            <button id="btn-search" class="btn btn-sm btn-success"><i class="fa fa-search"></i></button>
+            <button id='btn-units' class='btn btn-sm btn-primary'>°F</button>
+          </div>
+        </div>
+      </nav>
+      <div class="container content">
+        <div class="city-comparison-content">
+          <div class="desktop">
+            
+            <h1>June Average Weather in Each U.S. State</h1>
+<div class=''>
+  This page compares the average temperature and precipitation in June in all fifty of the United States.  It is based on the average temperature over the entire territory of the state between 1991–2020.
+</div>
+<div class='mt-3'>
+  Select month:     <select class='form-control url-selector' style='display:inline-block; width: unset;'>
+      <option value='/us-state-averages' >Entire Year</option>\n<option value='/us-state-averages/month-january' >January</option>\n<option value='/us-state-averages/month-february' >February</option>\n<option value='/us-state-averages/month-march' >March</option>\n<option value='/us-state-averages/month-april' >April</option>\n<option value='/us-state-averages/month-may' >May</option>\n<option value='/us-state-averages/month-june' selected>June</option>\n<option value='/us-state-averages/month-july' >July</option>\n<option value='/us-state-averages/month-august' >August</option>\n<option value='/us-state-averages/month-september' >September</option>\n<option value='/us-state-averages/month-october' >October</option>\n<option value='/us-state-averages/month-november' >November</option>\n<option value='/us-state-averages/month-december' >December</option>
+    </select>
+</div>
+<div class='mt-4 fs-14'>
+  * Click column headers to sort.
+</div>
+<div class='mt-2 table-responsive'>
+      <table class='bordered-table sort-table'>
+      <thead>
+        <tr>
+          <th class='text-center sort-header' rowspan='2' data-sortcol='0' data-sorttype='string'>City</th>
+          <th class='text-center sort-header' data-sorttype='num' data-sortcol='1'>High <span class='fs-13'>(°F)</span></th>
+          <th class='text-center sort-header' data-sorttype='num' data-sortcol='2'>Low <span class='fs-13'>(°F)</span></th>
+          <th class='text-center sort-header' data-sorttype='num' data-sortcol='3'>Precipitation <span class='fs-13'>(in)</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+<td><a href='/states/alabama/month-june'>Alabama</a></td>
+<td class='temp80 text-center'>88.4</td>
+<td class='temp60 text-center'>66.8</td>
+<td class='text-center'>4.9</td>
+</tr>
+<tr>
+<td><a href='/states/alaska/month-june'>Alaska</a></td>
+<td class='temp50 text-center'>59.9</td>
+<td class='temp40 text-center'>41.9</td>
+<td class='text-center'>2.4</td>
+</tr>
+<tr>
+<td><a href='/states/arizona/month-june'>Arizona</a></td>
+<td class='temp90 text-center'>93.0</td>
+<td class='temp50 text-center'>59.9</td>
+<td class='text-center'>0.2</td>
+</tr>
+<tr>
+<td><a href='/states/arkansas/month-june'>Arkansas</a></td>
+<td class='temp80 text-center'>87.4</td>
+<td class='temp60 text-center'>66.7</td>
+<td class='text-center'>3.9</td>
+</tr>
+<tr>
+<td><a href='/states/california/month-june'>California</a></td>
+<td class='temp80 text-center'>84.5</td>
+<td class='temp50 text-center'>55.5</td>
+<td class='text-center'>0.3</td>
+</tr>
+<tr>
+<td><a href='/states/colorado/month-june'>Colorado</a></td>
+<td class='temp70 text-center'>78.3</td>
+<td class='temp40 text-center'>47.6</td>
+<td class='text-center'>1.4</td>
+</tr>
+<tr>
+<td><a href='/states/connecticut/month-june'>Connecticut</a></td>
+<td class='temp70 text-center'>77.7</td>
+<td class='temp50 text-center'>56.0</td>
+<td class='text-center'>4.4</td>
+</tr>
+<tr>
+<td><a href='/states/delaware/month-june'>Delaware</a></td>
+<td class='temp80 text-center'>82.7</td>
+<td class='temp60 text-center'>62.4</td>
+<td class='text-center'>4.1</td>
+</tr>
+<tr>
+<td><a href='/states/florida/month-june'>Florida</a></td>
+<td class='temp90 text-center'>90.4</td>
+<td class='temp70 text-center'>70.9</td>
+<td class='text-center'>7.7</td>
+</tr>
+<tr>
+<td><a href='/states/georgia/month-june'>Georgia</a></td>
+<td class='temp80 text-center'>88.6</td>
+<td class='temp60 text-center'>66.8</td>
+<td class='text-center'>5.0</td>
+</tr>
+<tr>
+<td><a href='/states/hawaii/month-june'>Hawaii</a> <sup><a href='#footnote1'>[1]</a></sup></td>
+<td class='temp80 text-center'>82.1</td>
+<td class='temp60 text-center'>68.5</td>
+<td class='text-center'>2.2</td>
+</tr>
+<tr>
+<td><a href='/states/idaho/month-june'>Idaho</a></td>
+<td class='temp70 text-center'>71.2</td>
+<td class='temp40 text-center'>43.7</td>
+<td class='text-center'>1.8</td>
+</tr>
+<tr>
+<td><a href='/states/illinois/month-june'>Illinois</a></td>
+<td class='temp80 text-center'>82.9</td>
+<td class='temp60 text-center'>61.5</td>
+<td class='text-center'>4.7</td>
+</tr>
+<tr>
+<td><a href='/states/indiana/month-june'>Indiana</a></td>
+<td class='temp80 text-center'>82.0</td>
+<td class='temp60 text-center'>60.5</td>
+<td class='text-center'>4.8</td>
+</tr>
+<tr>
+<td><a href='/states/iowa/month-june'>Iowa</a></td>
+<td class='temp80 text-center'>80.6</td>
+<td class='temp50 text-center'>59.2</td>
+<td class='text-center'>5.3</td>
+</tr>
+<tr>
+<td><a href='/states/kansas/month-june'>Kansas</a></td>
+<td class='temp80 text-center'>86.7</td>
+<td class='temp60 text-center'>61.7</td>
+<td class='text-center'>4.0</td>
+</tr>
+<tr>
+<td><a href='/states/kentucky/month-june'>Kentucky</a></td>
+<td class='temp80 text-center'>84.1</td>
+<td class='temp60 text-center'>61.9</td>
+<td class='text-center'>4.7</td>
+</tr>
+<tr>
+<td><a href='/states/louisiana/month-june'>Louisiana</a></td>
+<td class='temp80 text-center'>89.8</td>
+<td class='temp70 text-center'>70.7</td>
+<td class='text-center'>5.5</td>
+</tr>
+<tr>
+<td><a href='/states/maine/month-june'>Maine</a></td>
+<td class='temp70 text-center'>72.1</td>
+<td class='temp40 text-center'>49.5</td>
+<td class='text-center'>4.4</td>
+</tr>
+<tr>
+<td><a href='/states/maryland/month-june'>Maryland</a></td>
+<td class='temp80 text-center'>82.5</td>
+<td class='temp60 text-center'>61.7</td>
+<td class='text-center'>4.2</td>
+</tr>
+<tr>
+<td><a href='/states/massachusetts/month-june'>Massachusetts</a></td>
+<td class='temp70 text-center'>76.5</td>
+<td class='temp50 text-center'>54.9</td>
+<td class='text-center'>4.3</td>
+</tr>
+<tr>
+<td><a href='/states/michigan/month-june'>Michigan</a></td>
+<td class='temp70 text-center'>76.3</td>
+<td class='temp50 text-center'>52.9</td>
+<td class='text-center'>3.4</td>
+</tr>
+<tr>
+<td><a href='/states/minnesota/month-june'>Minnesota</a></td>
+<td class='temp70 text-center'>75.9</td>
+<td class='temp50 text-center'>53.6</td>
+<td class='text-center'>4.5</td>
+</tr>
+<tr>
+<td><a href='/states/mississippi/month-june'>Mississippi</a></td>
+<td class='temp80 text-center'>89.0</td>
+<td class='temp60 text-center'>68.0</td>
+<td class='text-center'>4.7</td>
+</tr>
+<tr>
+<td><a href='/states/missouri/month-june'>Missouri</a></td>
+<td class='temp80 text-center'>84.1</td>
+<td class='temp60 text-center'>63.0</td>
+<td class='text-center'>4.6</td>
+</tr>
+<tr>
+<td><a href='/states/montana/month-june'>Montana</a></td>
+<td class='temp70 text-center'>71.7</td>
+<td class='temp40 text-center'>45.8</td>
+<td class='text-center'>2.9</td>
+</tr>
+<tr>
+<td><a href='/states/nebraska/month-june'>Nebraska</a></td>
+<td class='temp80 text-center'>81.8</td>
+<td class='temp50 text-center'>56.4</td>
+<td class='text-center'>3.8</td>
+</tr>
+<tr>
+<td><a href='/states/nevada/month-june'>Nevada</a></td>
+<td class='temp80 text-center'>81.3</td>
+<td class='temp50 text-center'>50.0</td>
+<td class='text-center'>0.6</td>
+</tr>
+<tr>
+<td><a href='/states/new-hampshire/month-june'>New Hampshire</a></td>
+<td class='temp70 text-center'>74.4</td>
+<td class='temp50 text-center'>50.8</td>
+<td class='text-center'>4.6</td>
+</tr>
+<tr>
+<td><a href='/states/new-jersey/month-june'>New Jersey</a></td>
+<td class='temp80 text-center'>81.0</td>
+<td class='temp50 text-center'>59.6</td>
+<td class='text-center'>4.3</td>
+</tr>
+<tr>
+<td><a href='/states/new-mexico/month-june'>New Mexico</a></td>
+<td class='temp80 text-center'>87.8</td>
+<td class='temp50 text-center'>54.4</td>
+<td class='text-center'>1.0</td>
+</tr>
+<tr>
+<td><a href='/states/new-york/month-june'>New York</a></td>
+<td class='temp70 text-center'>75.4</td>
+<td class='temp50 text-center'>53.4</td>
+<td class='text-center'>4.3</td>
+</tr>
+<tr>
+<td><a href='/states/north-carolina/month-june'>North Carolina</a></td>
+<td class='temp80 text-center'>84.9</td>
+<td class='temp60 text-center'>63.8</td>
+<td class='text-center'>4.7</td>
+</tr>
+<tr>
+<td><a href='/states/north-dakota/month-june'>North Dakota</a></td>
+<td class='temp70 text-center'>75.5</td>
+<td class='temp50 text-center'>51.8</td>
+<td class='text-center'>3.5</td>
+</tr>
+<tr>
+<td><a href='/states/ohio/month-june'>Ohio</a></td>
+<td class='temp80 text-center'>80.7</td>
+<td class='temp50 text-center'>58.8</td>
+<td class='text-center'>4.4</td>
+</tr>
+<tr>
+<td><a href='/states/oklahoma/month-june'>Oklahoma</a></td>
+<td class='temp80 text-center'>88.7</td>
+<td class='temp60 text-center'>65.9</td>
+<td class='text-center'>4.3</td>
+</tr>
+<tr>
+<td><a href='/states/oregon/month-june'>Oregon</a></td>
+<td class='temp70 text-center'>71.7</td>
+<td class='temp40 text-center'>44.5</td>
+<td class='text-center'>1.5</td>
+</tr>
+<tr>
+<td><a href='/states/pennsylvania/month-june'>Pennsylvania</a></td>
+<td class='temp70 text-center'>78.3</td>
+<td class='temp50 text-center'>55.6</td>
+<td class='text-center'>4.4</td>
+</tr>
+<tr>
+<td><a href='/states/rhode-island/month-june'>Rhode Island</a></td>
+<td class='temp70 text-center'>76.4</td>
+<td class='temp50 text-center'>56.6</td>
+<td class='text-center'>4.0</td>
+</tr>
+<tr>
+<td><a href='/states/south-carolina/month-june'>South Carolina</a></td>
+<td class='temp80 text-center'>88.3</td>
+<td class='temp60 text-center'>66.9</td>
+<td class='text-center'>4.8</td>
+</tr>
+<tr>
+<td><a href='/states/south-dakota/month-june'>South Dakota</a></td>
+<td class='temp70 text-center'>78.6</td>
+<td class='temp50 text-center'>54.1</td>
+<td class='text-center'>3.5</td>
+</tr>
+<tr>
+<td><a href='/states/tennessee/month-june'>Tennessee</a></td>
+<td class='temp80 text-center'>85.0</td>
+<td class='temp60 text-center'>63.3</td>
+<td class='text-center'>4.7</td>
+</tr>
+<tr>
+<td><a href='/states/texas/month-june'>Texas</a></td>
+<td class='temp90 text-center'>92.3</td>
+<td class='temp60 text-center'>68.7</td>
+<td class='text-center'>3.1</td>
+</tr>
+<tr>
+<td><a href='/states/utah/month-june'>Utah</a></td>
+<td class='temp80 text-center'>81.1</td>
+<td class='temp50 text-center'>50.8</td>
+<td class='text-center'>0.7</td>
+</tr>
+<tr>
+<td><a href='/states/vermont/month-june'>Vermont</a></td>
+<td class='temp70 text-center'>73.6</td>
+<td class='temp50 text-center'>50.5</td>
+<td class='text-center'>4.7</td>
+</tr>
+<tr>
+<td><a href='/states/virginia/month-june'>Virginia</a></td>
+<td class='temp80 text-center'>82.6</td>
+<td class='temp60 text-center'>60.8</td>
+<td class='text-center'>4.4</td>
+</tr>
+<tr>
+<td><a href='/states/washington/month-june'>Washington</a></td>
+<td class='temp60 text-center'>69.9</td>
+<td class='temp40 text-center'>46.7</td>
+<td class='text-center'>1.9</td>
+</tr>
+<tr>
+<td><a href='/states/west-virginia/month-june'>West Virginia</a></td>
+<td class='temp80 text-center'>80.1</td>
+<td class='temp50 text-center'>57.2</td>
+<td class='text-center'>4.7</td>
+</tr>
+<tr>
+<td><a href='/states/wisconsin/month-june'>Wisconsin</a></td>
+<td class='temp70 text-center'>76.4</td>
+<td class='temp50 text-center'>53.7</td>
+<td class='text-center'>4.7</td>
+</tr>
+<tr>
+<td><a href='/states/wyoming/month-june'>Wyoming</a></td>
+<td class='temp70 text-center'>73.2</td>
+<td class='temp40 text-center'>44.1</td>
+<td class='text-center'>1.7</td>
+</tr>
+      </tbody>
+    </table>
+</div>
+
+<div class='fs-14 mt-5'>
+  <a name='footnote1'>
+  1. Data for all states except Hawaii is calculated by the NOAA.  For Hawaii, the number represents the average of 5 locations: Honolulu, Hilo, Molokai Airport, Lihue, and Kula Hospital at an elevation of 944 meters in Maui.
+</div>
+            
+          </div>
+        </div>
+      </div>
+      <div class="footer">
+        © H Brothers Inc, 2021–2022
+        <div class="mt-2">
+          <a href="/contact">Contact us</a> | <a href="/privacy">Privacy policy</a>
+
+        </div>
+      </div>
+      <div id="overlay"></div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    var _page = {"pageType":"us-state-averages","units":"F","data":{}};
+    var _pageScript = function() {
+      
+    }
+  </script>
+  <script type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+<script type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js'></script>
+<script type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/babel-core/5.6.15/browser-polyfill.min.js'></script>
+<script type='text/javascript' src='/resources/page.js?1666379876'></script>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-203605896-1"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-203605896-1');
+      </script>
+</body>
+</html>

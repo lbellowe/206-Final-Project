@@ -12,7 +12,7 @@ def setUpDatabase(db_name):
 
 # CREATE TABLE FOR COVID DATA IN DATABASE
 #we created a table with columns in SQLite 
-def create_table(cur, conn):
+def create_covid_table(cur, conn):
     #cur.execute("DROP TABLE IF EXISTS COVID19")
     cur.execute("CREATE TABLE IF NOT EXISTS \"COVID19\" (id INTEGER PRIMARY KEY, state TEXT, month TEXT, confirmed INT, deaths INT)")
     conn.commit()
@@ -65,14 +65,14 @@ def add_from_json(filename, cur, conn):
 
 
 
-def main():
-    # SETUP DATABASE AND TABLE
-    cur, conn = setUpDatabase('weather.db')
-    create_table(cur, conn)
+# def main():
 
-    create_table(cur, conn)
-    add_from_json('covidstates.json', cur, conn)
+#     cur, conn = setUpDatabase('weather.db')
+#     create_covid_table(cur, conn)
+
+
+#     add_from_json('covidstates.json', cur, conn)
     
     
-if __name__ == "__main__":
-    main()
+# if __name__ == "__main__":
+#     main()

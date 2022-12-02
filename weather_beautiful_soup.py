@@ -81,7 +81,7 @@ def get_monthly_information(month, cur, conn):
         value = (state_lst[i], high_temps[i], low_temps[i])
         key = month_lst[0]
         month_dict[key] = value
-        print(month_dict)
+   
         for i in month_dict:
             mnth = i 
             state = month_dict[i][0]
@@ -101,51 +101,51 @@ def get_monthly_information(month, cur, conn):
 
 
 
-class TestCases(unittest.TestCase):
+# class TestCases(unittest.TestCase):
 
-    def setUp(self) -> None:
-        self.cur, self.conn = setUpDatabase('weather.db')
+    # def setUp(self) -> None:
+    #     self.cur, self.conn = setUpDatabase('weather.db')
 
-    def test_create_weather_table(self):
-        self.cur.execute("SELECT COUNT(*) FROM sqlite_master WHERE type='table' AND name='Weather'")
+    # def test_create_weather_table(self):
+    #     self.cur.execute("SELECT COUNT(*) FROM sqlite_master WHERE type='table' AND name='Weather'")
 
-    def test_get_yearly_weather(self):
-        yearly_stats = get_yearly_weather("html_files/Weather_for_All_Fifty_States.html")
+    # def test_get_yearly_weather(self):
+    #     yearly_stats = get_yearly_weather("html_files/Weather_for_All_Fifty_States.html")
       
     
-    def test_get_monthly_information(self):
-        cur, conn = setUpDatabase('weather.db')
-        html_list = ["January",
-                     "February",
-                     "March",
-                     "April",
-                     "May",
-                     "June",
-                     "July",
-                     "August",
-                     "September",
-                     "October",
-                     "November",
-                     "December"]
-        for i in html_list:
-            get_monthly_information(i, cur, conn)
+    # def test_get_monthly_information(self):
+    #     cur, conn = setUpDatabase('weather.db')
+    #     html_list = ["January",
+    #                  "February",
+    #                  "March",
+    #                  "April",
+    #                  "May",
+    #                  "June",
+    #                  "July",
+    #                  "August",
+    #                  "September",
+    #                  "October",
+    #                  "November",
+    #                  "December"]
+    #     for i in html_list:
+    #         get_monthly_information(i, cur, conn)
 
         # monthly_informations = [get_monthly_information(month, cur, conn) for month in html_list]
         
 
 
 
-def main():
+# def main():
     # SETUP DATABASE AND TABLE
-    cur, conn = setUpDatabase('weather.db')
-    create_weather_table(cur, conn)
+#     cur, conn = setUpDatabase('weather.db')
+#     create_weather_table(cur, conn)
 
  
     
 
-if __name__ == '__main__':
-    main()
-    unittest.main(verbosity=2)
+# if __name__ == '__main__':
+#     main()
+#     unittest.main(verbosity=2)
     
 
 

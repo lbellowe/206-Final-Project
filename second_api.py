@@ -90,14 +90,14 @@ def add_data_from_json(filename, cur, conn):
     
 
 
-def main():
+# def main():
     # SETUP DATABASE AND TABLE
-    cur, conn = setUpDatabase('weather.db')
-    create_risk_table(cur, conn)
-    add_data_from_json('risk_covid_data.json', cur, conn)
+    # cur, conn = setUpDatabase('weather.db')
+    # create_risk_table(cur, conn)
+    # add_data_from_json('risk_covid_data.json', cur, conn)
     # visualize_risk_vs_state(cur, conn)
     
     
-if __name__ == "__main__":
-    main()
+# if __name__ == "__main__":
+#     main()
 

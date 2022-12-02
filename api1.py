@@ -95,10 +95,11 @@ def create_month_table(cur,conn):
   
     conn.commit()
     
-
-                
-
-
+# def join_month_covid(cur, conn):
+#     cur.execute("SELECT Month.title FROM Month JOIN COVID19 ON Month.month_id = COVID19.month")
+#     dates = cur.fetchall()
+#     print(dates)
+#     conn.commit()
 
 
 # def main():

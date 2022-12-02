@@ -60,6 +60,42 @@ def add_from_json(filename, cur, conn):
            
     conn.commit()
 
+def create_month_table(cur,conn):
+    months = ["April",
+                     "May",
+                     "June",
+                     "July",
+                     "August",
+                     "September",
+                     "October",
+                     "November",
+                     "December",
+                     "January",
+                     "February",
+                     "March",]
+    id = ["2020-04",
+    "2020-05",
+    "2020-06",
+    "2020-07",
+    "2020-08",
+    "2020-09",
+    "2020-10",
+    "2020-11",
+    "2020-12",
+    "2021-01",
+    "2021-02",
+    "2021-03"]
+    
+    cur.execute("DROP TABLE IF EXISTS Month")
+    cur.execute("CREATE TABLE Month (month_id TEXT PRIMARY KEY, title TEXT)")
+  
+    for i in range(len(months)):
+        print(id[1])
+        cur.execute("INSERT OR IGNORE INTO Month (month_id,title) VALUES (?,?)",(id[i],months[i]))
+  
+    conn.commit()
+    
+
                 
 
 

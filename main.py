@@ -54,6 +54,9 @@ def main():
     create_covid_table(cur, conn)
     add_from_json('covidstates.json', cur, conn)
 
+    create_month_table(cur, conn)
+    add_from_json('covidstates.json', cur, conn)
+
 if __name__ == '__main__':
     main()
     unittest.main(verbosity=2)

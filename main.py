@@ -50,6 +50,7 @@ def main():
     #Lindsey
     create_risk_table(cur, conn)
     add_data_from_json('risk_covid_data.json', cur, conn)
+    visualize_state_risk_data(10, cur, conn)
     #Kiran
     create_covid_table(cur, conn)
     add_from_json('covidstates.json', cur, conn)

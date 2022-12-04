@@ -50,8 +50,7 @@ def get_monthly_information(month, cur, conn):
     low_temps = []
     month_lst = [] 
     month_dict = {}
-    calc_dict_high = {}
-    calc_dict_low = {}
+
     
  
    

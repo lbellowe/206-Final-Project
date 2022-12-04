@@ -5,6 +5,7 @@ import os
 import csv
 import unittest
 import sqlite3
+import math 
 
 import json 
 #https://www.extremeweatherwatch.com/us-state-averages
@@ -49,6 +50,8 @@ def get_monthly_information(month, cur, conn):
     low_temps = []
     month_lst = [] 
     month_dict = {}
+    calc_dict_high = {}
+    calc_dict_low = {}
     
  
    
@@ -82,12 +85,15 @@ def get_monthly_information(month, cur, conn):
         key = month_lst[0]
         month_dict[key] = value
    
+      
         for i in month_dict:
             mnth = i 
             state = month_dict[i][0]
             high = month_dict[i][1]
             low = month_dict[i][2]
-    
+        
+        
+
             
             cur.execute("INSERT OR IGNORE INTO Weather (month, state, high_temp, low_temp) VALUES (?,?,?,?)", (mnth, state, high, low))
             
@@ -97,9 +103,10 @@ def get_monthly_information(month, cur, conn):
             conn.commit()
 
 
+
             
 
-
+#mind max high min high max low min low 
 
 # class TestCases(unittest.TestCase):
 

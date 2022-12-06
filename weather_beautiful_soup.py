@@ -202,7 +202,7 @@ def visualization_weather_data(cur, conn):
         for item in weather_data:
             state_lst.append(item[0])
             high_lst.append(item[1])
-            low_lst.append(item[1])
+            low_lst.append(item[2])
 
         X_axis = np.arange(len(state_lst))
         plt.bar(X_axis - 0.2, high_lst, 0.4, label = 'High Temp')
@@ -213,6 +213,8 @@ def visualization_weather_data(cur, conn):
         plt.xlabel("State")
         plt.ylabel("Temperature(fahrenheit)")
         plt.title(i)
+        plt.xticks(rotation=90)
+        plt.tight_layout()
         plt.legend()
         plt.show()
 

@@ -192,31 +192,61 @@ def visualization_weather_data(cur, conn):
                     "October",
                     "November",
                     "December"]
+    x_lst = []
+    y_lst = []
     for i in html_list:
-        cur.execute('SELECT Weather.state, Weather.high_temp, Weather.low_temp FROM Weather WHERE month = ?',(i,))
-        weather_data = cur.fetchall()
-        conn.commit()
-        state_lst = []
-        high_lst = []
-        low_lst = [] 
-        for item in weather_data:
-            state_lst.append(item[0])
-            high_lst.append(item[1])
-            low_lst.append(item[2])
+        data = get_monthly_information(i, cur, conn)
+        print(data)
+        x_lst = data[0:8:2]
+        print(x_lst)
+        y_lst = data[1:8:2]
+        print(y_lst)
+       
+ 
+# creating the bar plot
+        plt.figure()
+        plt.scatter(x_lst[0], y_lst[0], color ='purple', s = 70)
+        plt.text(x_lst[0], y_lst[0], str(y_lst[0]) + "˚F", horizontalalignment ='center', verticalalignment='bottom', rotation=45)
+        plt.scatter(x_lst[1], y_lst[1], color ='green', s = 70)
+        plt.text(x_lst[1], y_lst[1], str(y_lst[1]) + "˚F", horizontalalignment ='center', verticalalignment='bottom', rotation=45)
+        plt.scatter(x_lst[2], y_lst[2], color ='orange', s = 70)
+        plt.text(x_lst[2], y_lst[2], str(y_lst[2]) + "˚F", horizontalalignment ='center', verticalalignment='bottom',rotation=45)
+        plt.scatter(x_lst[3], y_lst[3], color ='blue', s = 70)
+        plt.text(x_lst[3], y_lst[3], str(y_lst[3]) + "˚F", horizontalalignment ='center', verticalalignment='bottom', rotation=45)
+        plt.legend(["Max High Temp" , "Min High Temp", "Max Low Temp", "Min Low Temp"], fontsize = 10)
+        # plt.xticks(rotation = 45)
+        plt.tight_layout()
+        plt.xlabel("State")
+        plt.ylabel("Temperature(˚F)")
+        plt.title(i + " Weather Data")
+        plt.show()
 
-        X_axis = np.arange(len(state_lst))
-        plt.bar(X_axis - 0.2, high_lst, 0.4, label = 'High Temp')
-        plt.bar(X_axis - 0.2, low_lst, 0.4, label = 'Low Temp')
+
+
+        # cur.execute('SELECT Weather.state, Weather.high_temp, Weather.low_temp FROM Weather WHERE month = ?',(i,))
+        # weather_data = cur.fetchall()
+        # conn.commit()
+        # state_lst = []
+        # high_lst = []
+        # low_lst = [] 
+        # for item in weather_data:
+        #     state_lst.append(item[0])
+        #     high_lst.append(item[1])
+        #     low_lst.append(item[2])
+
+        # X_axis = np.arange(len(state_lst))
+        # plt.bar(X_axis - 0.2, high_lst, 0.4, label = 'High Temp')
+        # plt.bar(X_axis - 0.2, low_lst, 0.4, label = 'Low Temp')
 
   
-        plt.xticks(X_axis, state_lst)
-        plt.xlabel("State")
-        plt.ylabel("Temperature(fahrenheit)")
-        plt.title(i)
-        plt.xticks(rotation=90)
-        plt.tight_layout()
-        plt.legend()
-        plt.show()
+        # plt.xticks(X_axis, state_lst)
+        # plt.xlabel("State")
+        # plt.ylabel("Temperature(fahrenheit)")
+        # plt.title(i)
+        # plt.xticks(rotation=90)
+        # plt.tight_layout()
+        # plt.legend()
+        # plt.show()
 
 class TestCases(unittest.TestCase):
 

@@ -2,7 +2,7 @@ import unittest
 import sqlite3
 import json
 import os
-
+import matplotlib.pyplot as plt
 #Create Database
 def setUpDatabase(db_name):
     path = os.path.dirname(os.path.abspath(__file__))
@@ -91,7 +91,6 @@ def create_month_table(cur,conn):
     cur.execute("CREATE TABLE Month (month_id INTEGER PRIMARY KEY, title TEXT, month_num TEXT)")
   
     for i in range(len(months)):
-        print(id[1])
         cur.execute("INSERT OR IGNORE INTO Month (month_id,title,month_num) VALUES (?,?,?)",(id[i],months[i], date[i]))
   
     conn.commit()
@@ -104,22 +103,22 @@ def create_month_table(cur,conn):
 
 #CALCULATIONS
 def max_cases_per_state(cur, conn):
-   cur.execute("SELECT COVID19.state, month.title, MAX(COVID19.confirmed) FROM COVID19 JOIN Month ON Month.month_id = COVID19.month GROUP BY COVID19.state")
+   cur.execute("SELECT COVID19.state, month.title, MAX(COVID19.confirmed) FROM COVID19 JOIN Month ON Month.month_num = COVID19.month GROUP BY COVID19.state")
    max = cur.fetchall()
    conn.commit()
    return max
 def min_cases_per_state(cur, conn):
-    cur.execute("SELECT COVID19.state, month.title, MIN(COVID19.confirmed) FROM COVID19 JOIN Month ON Month.month_id = COVID19.month GROUP BY COVID19.state")
+    cur.execute("SELECT COVID19.state, month.title, MIN(COVID19.confirmed) FROM COVID19 JOIN Month ON Month.month_num = COVID19.month GROUP BY COVID19.state")
     min = cur.fetchall()
     conn.commit()
     return min
 def max_deaths_per_state(cur, conn):
-    cur.execute("SELECT COVID19.state, month.title, MAX(COVID19.deaths) FROM COVID19 JOIN Month ON Month.month_id = COVID19.month GROUP BY COVID19.state")
+    cur.execute("SELECT COVID19.state, month.title, MAX(COVID19.deaths) FROM COVID19 JOIN Month ON Month.month_num = COVID19.month GROUP BY COVID19.state")
     max = cur.fetchall()
     conn.commit()
     return max
 def min_deaths_per_state(cur, conn):
-    cur.execute("SELECT COVID19.state, month.title, MIN(COVID19.deaths) FROM COVID19 JOIN Month ON Month.month_id = COVID19.month GROUP BY COVID19.state")
+    cur.execute("SELECT COVID19.state, month.title, MIN(COVID19.deaths) FROM COVID19 JOIN Month ON Month.month_num = COVID19.month GROUP BY COVID19.state")
     min = cur.fetchall()
     conn.commit()
     return min
@@ -143,6 +142,52 @@ def covid_visualization(cur, conn):
     min_cases = min_cases_per_state(cur, conn)
     max_deaths = max_deaths_per_state(cur, conn)
     min_deaths = min_deaths_per_state(cur, conn)
+    state_lst = []
+    maxc = []
+    minc = []
+    maxd = []
+    mind = []
+    for i in max_cases:
+        state_lst.append(i[0])
+        maxc.append(i[2])
+    for i in min_cases:
+        minc.append(i[2])
+    for i in max_deaths:
+        maxd.append(i[2])
+    for i in min_deaths:
+        mind.append(i[2])
+    #FIRST GRAPH: Max Cases
+    plt.figure()
+    plt.bar(state_lst, maxc, color = "green")
+    plt.xticks(rotation = 90)
+    plt.xlabel = ("States")
+    plt.ylabel = ("Confirmed Cases")
+    plt.title("Confirmed Cases per State in March")
+    plt.show()
+
+    plt.figure()
+    plt.bar(state_lst, minc, color = "green")
+    plt.xticks(rotation = 90)
+    plt.xlabel = ("States")
+    plt.ylabel = ("Confirmed Cases")
+    plt.title("Confirmed Cases per State in April")
+    plt.show()
+
+    plt.figure()
+    plt.bar(state_lst, maxd, color = "green")
+    plt.xticks(rotation = 90)
+    plt.xlabel = ("States")
+    plt.ylabel = ("Deaths")
+    plt.title("Deaths per State in March")
+    plt.show()
+
+    plt.figure()
+    plt.bar(state_lst, mind, color = "green")
+    plt.xticks(rotation = 90)
+    plt.xlabel = ("States")
+    plt.ylabel = ("Deaths")
+    plt.title("Deaths per State in April")
+    plt.show()
 
 # def main():
 
@@ -153,6 +198,8 @@ def covid_visualization(cur, conn):
 #     add_from_json('covidstates.json', cur, conn)
     
 #     write_out("first_api.csv", cur, conn)
+
+#     covid_visualization(cur, conn)
     
 # if __name__ == "__main__":
 #     main()

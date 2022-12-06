@@ -59,12 +59,14 @@ def main():
     data = visualize_state_risk_data(0, cur, conn)
     csv_out(data, "second_api.csv") 
     #Kiran
+    create_month_table(cur, conn)
     create_covid_table(cur, conn)
+
     add_from_json('covidstates.json', cur, conn)
     
-    create_month_table(cur, conn)
-    add_from_json('covidstates.json', cur, conn)
     write_out("first_api.csv", cur, conn)
+
+    covid_visualization(cur, conn)
 
 if __name__ == '__main__':
     main()

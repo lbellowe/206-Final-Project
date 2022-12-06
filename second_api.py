@@ -65,32 +65,45 @@ def add_data_from_json(filename, cur, conn):
             if count - init_count >= 25:
                 conn.commit()
                 return
-    # started CALCULATIONS HERE!!
+    # started CALCULATIONS HERE!
+    conn.commit()
 def visualize_state_risk_data(risk_num, cur, conn):
-    cur.execute("SELECT risk_data.state, risk_data.riskLevels FROM risk_data WHERE riskLevels <= ?", (risk_num,))
+    cur.execute("SELECT risk_data.state, risk_data.riskLevels, risk_data.population FROM risk_data WHERE riskLevels > ?", (risk_num,))
     data= cur.fetchall()
+    
     # print(data)
     state_lst = []
     risk_lst = []
+    pop_lst = []
+    og_risk = []
     state_risk_dict = {}
 
     for lst in data:
+        pop_lst.append(lst[2])
+        og_risk.append(lst[1])
         # print(lst)
         if lst[0] not in state_risk_dict:
             state_risk_dict[lst[0]] = lst[1]
         else: 
             state_risk_dict[lst[0]] += lst[1]
             # state_lst.append(lst[0])
-
+    # print(len(og_risk))
+    # print(len(pop_lst))
     for keys,values in state_risk_dict.items():
         # print(keys)
         avg_risk = values / 3
         state_lst.append(keys)
         risk_lst.append(avg_risk)
-    print(state_lst)
-    print(risk_lst)
+        state_risk_dict[keys] = avg_risk
+        # will write this out 
+    print(state_risk_dict)
+    
+
+    # print(state_lst)
+    # print(risk_lst)
 
     # need to figure out how to get rid of MP
+    # graph for avg risk and states
     plt.figure()
     plt.bar(state_lst, risk_lst, color = "pink")
     plt.xticks(rotation = 45)
@@ -98,40 +111,27 @@ def visualize_state_risk_data(risk_num, cur, conn):
     plt.ylabel("Average Risk")
     plt.title("Average Covid-19 Risk Level by State")
     plt.show()
-            
 
+    #  graph 2: scatter plot riskLevels versus popualtion 
+    # plt.figure()
+    # plt.scatter(risk_lst, og_risk)
+    # plt.show()
         
     conn.commit()
-
-
-# def visualize_risk_vs_state(cur, conn):
-#     cur.execute("SELECT state, riskLevels FROM risk_data")
-#     data = cur.fetchall()
-#     conn.commit()
-#     # print(data)
-#     state_list = []
-#     risk_list = []
-#     for item in data:
-#         state_list.append(item[0])
-#         risk_list.append(item[1])    
-
-#     plt.figure()
-#     plt.bar(state_list, risk_list)
-#     plt.xticks(rotation = 45)
-#     plt.show()
-
-
-    
-
+    return state_risk_dict
+def csv_out(data, file):
+    fout = open(file, 'w')
+    fout.write("Second API calculations: Finding average risk level per state" + "\n")
+    fout.write(str(data))
 
 # def main():
 #     # SETUP DATABASE AND TABLE
 #     cur, conn = setUpDatabase('weather.db')
 #     create_risk_table(cur, conn)
 #     add_data_from_json('risk_covid_data.json', cur, conn)
-#     visualize_state_risk_data(10, cur, conn)
-
-    
+#     #visualize_state_risk_data(0, cur, conn)
+#     data = visualize_state_risk_data(0, cur, conn)
+#     csv_out(data, "second_api.csv") 
     
 # if __name__ == "__main__":
 #     main()

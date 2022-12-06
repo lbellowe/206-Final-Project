@@ -10,6 +10,9 @@ import api1
 import second_api 
 import weather_beautiful_soup
 import main 
+import matplotlib.pyplot as plt
+import numpy as np
+
 
 from api1 import * 
 from second_api import *
@@ -48,16 +51,20 @@ def main():
     cur, conn = setUpDatabase('weather.db')
     #Leah
     create_weather_table(cur, conn)
+    get_all_monthly_information(cur,conn)
+    visualization_weather_data(cur, conn)
     #Lindsey
     create_risk_table(cur, conn)
     add_data_from_json('risk_covid_data.json', cur, conn)
-    visualize_state_risk_data(10, cur, conn) 
+    data = visualize_state_risk_data(0, cur, conn)
+    csv_out(data, "second_api.csv") 
     #Kiran
     create_covid_table(cur, conn)
     add_from_json('covidstates.json', cur, conn)
-
+    
     create_month_table(cur, conn)
     add_from_json('covidstates.json', cur, conn)
+    write_out("first_api.csv", cur, conn)
 
 if __name__ == '__main__':
     main()

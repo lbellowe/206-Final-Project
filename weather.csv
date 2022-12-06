@@ -1,0 +1,13 @@
+Month,Max High Temp State,Max High Temp,Min High Temp State,Min High Temp,Max Low Temp State,Max Low Temp,Min Low Temp State,Min Low Temp
+January,Hawaii [1],77,Alaska,10.7,Hawaii [1],62.5,Alaska,-2.4
+February,Hawaii [1],76.8,Alaska,16.2,Hawaii [1],62.5,Alaska,1.2
+March,Hawaii [1],77.3,Alaska,21.2,Hawaii [1],63.5,Alaska,3.5
+April,Florida,82.1,Alaska,35,Hawaii [1],65.1,Alaska,17.4
+May,Florida,87.5,Alaska,48.9,Hawaii [1],66.5,Alaska,31.2
+June,Arizona,93,Alaska,59.9,Florida,70.9,Alaska,41.9
+July,Arizona,95.2,Alaska,62.3,Florida,72.9,Alaska,45.9
+August,Texas,94.6,Alaska,57.9,Florida,73.1,Alaska,42.8
+September,Florida,89,Alaska,48.3,Florida,71,Alaska,34.5
+October,Florida,83.6,Alaska,33.2,Hawaii [1],68.8,Alaska,21.1
+November,Hawaii [1],80.2,Alaska,19.4,Hawaii [1],67,Alaska,7.3
+December,Hawaii [1],78.1,Alaska,13.2,Hawaii [1],64.6,Alaska,0.7

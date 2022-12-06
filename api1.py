@@ -50,7 +50,7 @@ def add_from_json(filename, cur, conn):
             mnth = i
             confirmed = dict[item][i]['confirmed']
             deaths = dict[item][i]['deaths']
-            cur.execute('INSERT OR IGNORE INTO COVID19(id, state, month, confirmed, deaths) VALUES(?,?,?,?,?)',
+            cur.execute('INSERT OR IGNORE INTO covid19(id, state, month, confirmed, deaths) VALUES(?,?,?,?,?)',
             (id, st, mnth, confirmed, deaths))
             id += 1
             count = count_item(cur, conn)
@@ -73,7 +73,7 @@ def create_month_table(cur,conn):
                      "January",
                      "February",
                      "March",]
-    id = ["2020-04",
+    date = ["2020-04",
     "2020-05",
     "2020-06",
     "2020-07",
@@ -85,13 +85,14 @@ def create_month_table(cur,conn):
     "2021-01",
     "2021-02",
     "2021-03"]
+    id = [4, 5, 6, 7, 8, 9, 10, 11, 12, 1, 2, 3]
     
     cur.execute("DROP TABLE IF EXISTS Month")
-    cur.execute("CREATE TABLE Month (month_id TEXT PRIMARY KEY, title TEXT)")
+    cur.execute("CREATE TABLE Month (month_id INTEGER PRIMARY KEY, title TEXT, month_num TEXT)")
   
     for i in range(len(months)):
         print(id[1])
-        cur.execute("INSERT OR IGNORE INTO Month (month_id,title) VALUES (?,?)",(id[i],months[i]))
+        cur.execute("INSERT OR IGNORE INTO Month (month_id,title,month_num) VALUES (?,?,?)",(id[i],months[i], date[i]))
   
     conn.commit()
     
@@ -101,15 +102,57 @@ def create_month_table(cur,conn):
 #     print(dates)
 #     conn.commit()
 
+#CALCULATIONS
+def max_cases_per_state(cur, conn):
+   cur.execute("SELECT COVID19.state, month.title, MAX(COVID19.confirmed) FROM COVID19 JOIN Month ON Month.month_id = COVID19.month GROUP BY COVID19.state")
+   max = cur.fetchall()
+   conn.commit()
+   return max
+def min_cases_per_state(cur, conn):
+    cur.execute("SELECT COVID19.state, month.title, MIN(COVID19.confirmed) FROM COVID19 JOIN Month ON Month.month_id = COVID19.month GROUP BY COVID19.state")
+    min = cur.fetchall()
+    conn.commit()
+    return min
+def max_deaths_per_state(cur, conn):
+    cur.execute("SELECT COVID19.state, month.title, MAX(COVID19.deaths) FROM COVID19 JOIN Month ON Month.month_id = COVID19.month GROUP BY COVID19.state")
+    max = cur.fetchall()
+    conn.commit()
+    return max
+def min_deaths_per_state(cur, conn):
+    cur.execute("SELECT COVID19.state, month.title, MIN(COVID19.deaths) FROM COVID19 JOIN Month ON Month.month_id = COVID19.month GROUP BY COVID19.state")
+    min = cur.fetchall()
+    conn.commit()
+    return min
+
+#WRITE TO CSV FILE
+def write_out(file, cur, conn):
+    fout = open(file, 'w')
+    fout.write("First API Calculations:" + "\n")
+    fout.write("Month with the most confirmed cases per state:" + "\n")
+    fout.write(str(max_cases_per_state(cur, conn)) + "\n")
+    fout.write("Month with the least confirmed cases per state:" + "\n")
+    fout.write(str(min_cases_per_state(cur, conn)) + "\n")
+    fout.write("Month with the most deaths per state:" + "\n")
+    fout.write(str(max_deaths_per_state(cur, conn)) + "\n")
+    fout.write("Month with the least deaths per state:" + "\n")
+    fout.write(str(min_deaths_per_state(cur, conn)) + "\n")
+
+#VISUALIZATIONS
+def covid_visualization(cur, conn):
+    max_cases = max_cases_per_state(cur, conn)
+    min_cases = min_cases_per_state(cur, conn)
+    max_deaths = max_deaths_per_state(cur, conn)
+    min_deaths = min_deaths_per_state(cur, conn)
 
 # def main():
 
 #     cur, conn = setUpDatabase('weather.db')
+#     create_month_table(cur, conn)
 #     create_covid_table(cur, conn)
-
 
 #     add_from_json('covidstates.json', cur, conn)
     
+#     write_out("first_api.csv", cur, conn)
     
 # if __name__ == "__main__":
 #     main()

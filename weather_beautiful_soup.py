@@ -6,6 +6,8 @@ import csv
 import unittest
 import sqlite3
 import math 
+import matplotlib.pyplot as plt
+import numpy as np
 
 import json 
 #https://www.extremeweatherwatch.com/us-state-averages
@@ -102,53 +104,161 @@ def get_monthly_information(month, cur, conn):
             conn.commit()
 
 
+    max_high_temp_calc = []
+    cur.execute("SELECT Weather.state, MAX(high_temp) AS maximum FROM Weather WHERE month = ?", (month,))
+    data= cur.fetchone()
+    max_high_temp_calc.append(data[0])
+    max_high_temp_calc.append(data[1])
+# print(max_high_temp_calc)
+# conn.commit()
 
+
+    min_high_temp_calc = []
+    cur.execute("SELECT Weather.state, MIN(high_temp) AS minimum FROM Weather WHERE month = ?", (month,))
+    data= cur.fetchone()
+    min_high_temp_calc.append(data[0])
+    min_high_temp_calc.append(data[1])
+# print(min_high_temp_calc)
+# conn.commit()
+
+
+    max_low_temp_calc = []
+    cur.execute("SELECT Weather.state, MAX(low_temp) AS maximum FROM Weather WHERE month = ?", (month,))
+    data= cur.fetchone()
+    max_low_temp_calc.append(data[0])
+    max_low_temp_calc.append(data[1])
+# print(max_low_temp_calc)
+# conn.commit()
+
+
+    min_low_temp_calc = []
+    cur.execute("SELECT Weather.state, MIN(low_temp) AS minimum FROM Weather WHERE month = ?", (month,))
+    data= cur.fetchone()
+    data = list(data)
+    min_low_temp_calc.append(data[0])
+    min_low_temp_calc.append(data[1])
+    # print(min_low_temp_calc)
+
+    new_lst = max_high_temp_calc + min_high_temp_calc + max_low_temp_calc + min_low_temp_calc
+
+    return new_lst
+    
+
+    #for each MONTH it prints:
+    #max high_temp, min high_temp, max low-temp, min_low_temp 
+
+        # with open("weather.csv", 'w') as f:
+        #     header = ["Month"]+["Max High Temp"] + ["Min High Temp"] + ["Max Low Temp"] + ["Min Low Temp"]
+        #     header = ','.join(header)
+        #     f.write(header+'\n')
+        #     for i in month_lst:
+        #         f.write(month_lst+new_lst)
+        # # for monthly_temps in min_low_temp_calc:
+        # #     print(monthly_temps)
+           
             
+def get_all_monthly_information(cur, conn):
+    html_list = ["January",
+                    "February",
+                    "March",
+                    "April",
+                    "May",
+                    "June",
+                    "July",
+                    "August",
+                    "September",
+                    "October",
+                    "November",
+                    "December"]
 
-#mind max high min high max low min low 
+    with open("weather.csv", 'w') as f:
+        header = ["Month"]+["Max High Temp State"]+["Max High Temp"] + ["Min High Temp State"] + ["Min High Temp"] + ["Max Low Temp State"] + ["Max Low Temp"] + ["Min Low Temp State"] + ["Min Low Temp"] 
+        writer = csv.writer(f)
+        writer.writerow(header)
+        for i in html_list:
+            data = [i]+get_monthly_information(i, cur, conn)
+            writer.writerow(data)
+        
+def visualization_weather_data(cur, conn):
+    html_list = ["January",
+                    "February",
+                    "March",
+                    "April",
+                    "May",
+                    "June",
+                    "July",
+                    "August",
+                    "September",
+                    "October",
+                    "November",
+                    "December"]
+    for i in html_list:
+        cur.execute('SELECT Weather.state, Weather.high_temp, Weather.low_temp FROM Weather WHERE month = ?',(i,))
+        weather_data = cur.fetchall()
+        conn.commit()
+        state_lst = []
+        high_lst = []
+        low_lst = [] 
+    for item in weather_data:
+        state_lst.append(item[0])
+        high_lst.append(item[1])
+        low_lst.append(item[1])
 
-# class TestCases(unittest.TestCase):
+    X_axis = np.arange(len(state_lst))
+    plt.bar(X_axis - 0.2, high_lst, 0.4, label = 'High Temp')
+    plt.bar(X_axis - 0.2, low_lst, 0.4, label = 'Low Temp')
 
-    # def setUp(self) -> None:
-    #     self.cur, self.conn = setUpDatabase('weather.db')
+  
+    plt.xticks(X_axis, state_lst)
+    plt.xlabel("State")
+    plt.ylabel("Temperature(fahrenheit)")
+    plt.title("Number of Students in each group")
+    plt.legend()
+    plt.show()
 
-    # def test_create_weather_table(self):
-    #     self.cur.execute("SELECT COUNT(*) FROM sqlite_master WHERE type='table' AND name='Weather'")
+class TestCases(unittest.TestCase):
 
-    # def test_get_yearly_weather(self):
-    #     yearly_stats = get_yearly_weather("html_files/Weather_for_All_Fifty_States.html")
+    def setUp(self) -> None:
+            self.cur, self.conn = setUpDatabase('weather.db')
+
+    def test_create_weather_table(self):
+        self.cur.execute("SELECT COUNT(*) FROM sqlite_master WHERE type='table' AND name='Weather'")
+
+    def test_get_yearly_weather(self):
+        yearly_stats = get_yearly_weather("html_files/Weather_for_All_Fifty_States.html")
       
     
-    # def test_get_monthly_information(self):
-    #     cur, conn = setUpDatabase('weather.db')
-    #     html_list = ["January",
-    #                  "February",
-    #                  "March",
-    #                  "April",
-    #                  "May",
-    #                  "June",
-    #                  "July",
-    #                  "August",
-    #                  "September",
-    #                  "October",
-    #                  "November",
-    #                  "December"]
-    #     for i in html_list:
-    #         get_monthly_information(i, cur, conn)
+    def test_get_monthly_information(self):
+        cur, conn = setUpDatabase('weather.db')
+        html_list = ["January",
+                     "February",
+                     "March",
+                     "April",
+                     "May",
+                     "June",
+                     "July",
+                     "August",
+                     "September",
+                     "October",
+                     "November",
+                     "December"]
+        for i in html_list:
+            get_monthly_information(i, cur, conn)
+    
 
-        # monthly_informations = [get_monthly_information(month, cur, conn) for month in html_list]
+
+        
         
 
 
 
 # def main():
-    # SETUP DATABASE AND TABLE
+   
 #     cur, conn = setUpDatabase('weather.db')
 #     create_weather_table(cur, conn)
-
- 
-    
-
+#     get_all_monthly_information(cur,conn)
+#     visualization_weather_data(cur, conn)
+   
 # if __name__ == '__main__':
 #     main()
 #     unittest.main(verbosity=2)

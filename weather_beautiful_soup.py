@@ -199,22 +199,22 @@ def visualization_weather_data(cur, conn):
         state_lst = []
         high_lst = []
         low_lst = [] 
-    for item in weather_data:
-        state_lst.append(item[0])
-        high_lst.append(item[1])
-        low_lst.append(item[1])
+        for item in weather_data:
+            state_lst.append(item[0])
+            high_lst.append(item[1])
+            low_lst.append(item[1])
 
-    X_axis = np.arange(len(state_lst))
-    plt.bar(X_axis - 0.2, high_lst, 0.4, label = 'High Temp')
-    plt.bar(X_axis - 0.2, low_lst, 0.4, label = 'Low Temp')
+        X_axis = np.arange(len(state_lst))
+        plt.bar(X_axis - 0.2, high_lst, 0.4, label = 'High Temp')
+        plt.bar(X_axis - 0.2, low_lst, 0.4, label = 'Low Temp')
 
   
-    plt.xticks(X_axis, state_lst)
-    plt.xlabel("State")
-    plt.ylabel("Temperature(fahrenheit)")
-    plt.title("Number of Students in each group")
-    plt.legend()
-    plt.show()
+        plt.xticks(X_axis, state_lst)
+        plt.xlabel("State")
+        plt.ylabel("Temperature(fahrenheit)")
+        plt.title(i)
+        plt.legend()
+        plt.show()
 
 class TestCases(unittest.TestCase):
 

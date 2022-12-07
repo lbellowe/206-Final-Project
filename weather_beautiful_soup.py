@@ -23,7 +23,7 @@ def setUpDatabase(db_name):
 
 def create_weather_table(cur,conn):
     # dont have primary key yet - idk what one would be bc all repeat prob
-    # cur.execute("DROP TABLE IF EXISTS Weather")
+    #cur.execute("DROP TABLE IF EXISTS Weather")
     cur.execute("CREATE TABLE IF NOT EXISTS Weather (state_month TEXT PRIMARY KEY, month TEXT, state TEXT, high_temp INTEGER, low_temp INTEGER)")
     conn.commit()
     pass
@@ -72,7 +72,7 @@ def get_monthly_information(month, cur, conn, item_size=50):
         state_name = temp.find_all("tr")
         for states in state_name:
             states_temp = states.find_all("td")
-            state_lst.append(states_temp[0].text)
+            state_lst.append(states_temp[0].text.rstrip(' [1]'))
             high_temps.append(float(states_temp[1].text))
             low_temps.append(float(states_temp[2].text))
             

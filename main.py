@@ -52,6 +52,7 @@ def main():
     #Leah
     create_weather_table(cur, conn)
     get_all_monthly_information(cur,conn)
+    write_csv(cur,conn)
     visualization_weather_data(cur, conn)
     #Lindsey
     create_risk_table(cur, conn)

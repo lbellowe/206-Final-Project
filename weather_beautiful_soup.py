@@ -23,8 +23,8 @@ def setUpDatabase(db_name):
 
 def create_weather_table(cur,conn):
     # dont have primary key yet - idk what one would be bc all repeat prob
-    cur.execute("DROP TABLE IF EXISTS Weather")
-    cur.execute("CREATE TABLE IF NOT EXISTS Weather (id INTEGER PRIMARY KEY autoincrement, month TEXT, state TEXT, high_temp INTEGER, low_temp INTEGER)")
+    # cur.execute("DROP TABLE IF EXISTS Weather")
+    cur.execute("CREATE TABLE IF NOT EXISTS Weather (state_month TEXT PRIMARY KEY, month TEXT, state TEXT, high_temp INTEGER, low_temp INTEGER)")
     conn.commit()
     pass
 
@@ -46,14 +46,12 @@ def get_yearly_weather(html_file):
     pass 
 
 
-def get_monthly_information(month, cur, conn):
+def get_monthly_information(month, cur, conn, item_size=50):
     state_lst = []
     high_temps = []
     low_temps = []
     month_lst = [] 
     month_dict = {}
-
-    
  
    
     file_name = "html_files/" + month + ".html"
@@ -68,8 +66,6 @@ def get_monthly_information(month, cur, conn):
             continue
         else:
             month_lst.append(m)
-
-
   
     states_info = soup.find_all("tbody")
     for temp in states_info:
@@ -92,18 +88,14 @@ def get_monthly_information(month, cur, conn):
             state = month_dict[i][0]
             high = month_dict[i][1]
             low = month_dict[i][2]
-        
-        
-
             
-            cur.execute("INSERT OR IGNORE INTO Weather (month, state, high_temp, low_temp) VALUES (?,?,?,?)", (mnth, state, high, low))
-            
-        
-                
-            
+            cur.execute("INSERT OR IGNORE INTO Weather (state_month, month, state, high_temp, low_temp) VALUES (?,?,?,?,?)", (state+"_"+mnth, mnth, state, high, low))
             conn.commit()
+            item_size -= 1
+            if item_size==0:
+                return
 
-
+def calculations(month, cur, conn):
     max_high_temp_calc = []
     cur.execute("SELECT Weather.state, MAX(high_temp) AS maximum FROM Weather WHERE month = ?", (month,))
     data= cur.fetchone()
@@ -147,12 +139,38 @@ def get_all_monthly_information(cur, conn):
                     "November",
                     "December"]
 
+    for i in html_list:
+        cur.execute("SELECT state From Weather where month = ?",(i,))
+        state_list = cur.fetchall()
+        if len(state_list)==50:
+            continue
+        elif len(state_list)==25:
+            get_monthly_information(i, cur, conn)
+            break
+        else:
+            get_monthly_information(i, cur, conn, item_size = 25)
+            break
+
+def write_csv(cur,conn):
+    html_list = ["January",
+                    "February",
+                    "March",
+                    "April",
+                    "May",
+                    "June",
+                    "July",
+                    "August",
+                    "September",
+                    "October",
+                    "November",
+                    "December"]
+
     with open("weather.csv", 'w') as f:
         header = ["Month"]+["Max High Temp State"]+["Max High Temp"] + ["Min High Temp State"] + ["Min High Temp"] + ["Max Low Temp State"] + ["Max Low Temp"] + ["Min Low Temp State"] + ["Min Low Temp"] 
         writer = csv.writer(f)
         writer.writerow(header)
         for i in html_list:
-            data = [i]+get_monthly_information(i, cur, conn)
+            data = [i]+calculations(i, cur, conn)
             writer.writerow(data)
         
 def visualization_weather_data(cur, conn):
@@ -171,7 +189,7 @@ def visualization_weather_data(cur, conn):
     x_lst = []
     y_lst = []
     for i in html_list:
-        data = get_monthly_information(i, cur, conn)
+        data = calculations(i, cur, conn)
   
         x_lst = data[0:8:2]
         print(x_lst)

@@ -30,22 +30,22 @@ class TestCases(unittest.TestCase):
         yearly_stats = get_yearly_weather("html_files/Weather_for_All_Fifty_States.html")
       
     
-    def test_get_monthly_information(self):
-        cur, conn = setUpDatabase('weather.db')
-        html_list = ["January",
-                     "February",
-                     "March",
-                     "April",
-                     "May",
-                     "June",
-                     "July",
-                     "August",
-                     "September",
-                     "October",
-                     "November",
-                     "December"]
-        for i in html_list:
-            get_monthly_information(i, cur, conn)
+    # def test_get_monthly_information(self):
+    #     cur, conn = setUpDatabase('weather.db')
+    #     html_list = ["January",
+    #                  "February",
+    #                  "March",
+    #                  "April",
+    #                  "May",
+    #                  "June",
+    #                  "July",
+    #                  "August",
+    #                  "September",
+    #                  "October",
+    #                  "November",
+    #                  "December"]
+    #     for i in html_list:
+    #         get_monthly_information(i, cur, conn)
 
 def main():
     cur, conn = setUpDatabase('weather.db')
@@ -58,14 +58,14 @@ def main():
     create_risk_table(cur, conn)
     add_data_from_json('risk_covid_data.json', cur, conn)
     data = visualize_state_risk_data(0, cur, conn)
-    csv_out(data, "second_api.csv") 
+    csv_out(data, "second_api.txt") 
     #Kiran
     create_month_table(cur, conn)
     create_covid_table(cur, conn)
 
     add_from_json('covidstates.json', cur, conn)
     
-    write_out("first_api.csv", cur, conn)
+    write_out("first_api.txt", cur, conn)
 
     covid_visualization(cur, conn)
 

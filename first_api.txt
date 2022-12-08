@@ -1,0 +1,9 @@
+First API Calculations:
+Month with the most confirmed cases per state:
+[('Alabama', 'March', 15701638), ('Alaska', 'March', 1868257), ('Arizona', 'March', 25799613), ('Arkansas', 'March', 10140927), ('California', 'March', 112432256), ('Colorado', 'March', 13881333), ('Connecticut', 'March', 9132906), ('Delaware', 'March', 2815506), ('District of Columbia', 'July', 345436)]
+Month with the least confirmed cases per state:
+[('Alabama', 'April', 125166), ('Alaska', 'April', 8231), ('Arizona', 'April', 128668), ('Arkansas', 'April', 53571), ('California', 'April', 865585), ('Colorado', 'April', 264026), ('Connecticut', 'April', 467204), ('Delaware', 'April', 67480), ('District of Columbia', 'April', 70950)]
+Month with the most deaths per state:
+[('Alabama', 'March', 320023), ('Alaska', 'March', 9123), ('Arizona', 'March', 513727), ('Arkansas', 'March', 169225), ('California', 'March', 1747316), ('Colorado', 'March', 189756), ('Connecticut', 'March', 241425), ('Delaware', 'March', 46638), ('District of Columbia', 'July', 17731)]
+Month with the least deaths per state:
+[('Alabama', 'April', 4044), ('Alaska', 'April', 173), ('Arizona', 'April', 4870), ('Arkansas', 'April', 1007), ('California', 'April', 30176), ('Colorado', 'April', 11715), ('Connecticut', 'April', 29752), ('Delaware', 'April', 1840), ('District of Columbia', 'April', 2651)]

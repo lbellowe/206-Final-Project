@@ -189,6 +189,9 @@ def visualization_weather_data(cur, conn):
     x_lst = []
     y_lst = []
     for i in html_list:
+        cur.execute('SELECT * FROM Weather WHERE month = ?',(i,))
+        if len(cur.fetchall()) == 0:
+            return
         data = calculations(i, cur, conn)
   
         x_lst = data[0:8:2]

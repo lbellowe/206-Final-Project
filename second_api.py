@@ -3,6 +3,7 @@ import sqlite3
 import json
 import os
 import matplotlib.pyplot as plt
+import requests
 
 # Create Database
 def setUpDatabase(db_name):
@@ -11,8 +12,8 @@ def setUpDatabase(db_name):
     cur = conn.cursor()
     return cur, conn
 
-# LINK TO API THAT I AM USING: https://api.covidactnow.org/v2/county/AK.json?apiKey=68bed0b82fde4839aebeb691441fa7ef
-# three extra states: DC, PR = puerto rico, 
+# LINK TO API THAT I AM USING: https://api.covidactnow.org/v2/counties.json?apiKey=68bed0b82fde4839aebeb691441fa7ef
+
 
 # CREATE TABLE FOR risk_data IN DATABASE
 def create_risk_table(cur, conn):
@@ -28,13 +29,21 @@ def count_item_in_data_base(cur, conn):
 
 
 # CODE TO ADD JSON TO THE TABLE
-def add_data_from_json(filename, cur, conn):
+def add_data_from_json(cur, conn):
     init_count = count_item_in_data_base(cur,conn)
+    API_KEY = "68bed0b82fde4839aebeb691441fa7ef"
+    JSON_link = "https://api.covidactnow.org/v2/counties.json?apiKey=68bed0b82fde4839aebeb691441fa7ef"
+    base_url = "https://api.covidactnow.org/v2/counties.json?apiKey={}"
+    request_url = base_url.format(API_KEY)
+    param_dict = {'format': 'json'}
+    r = requests.get(request_url, params = param_dict)
+    data = r.text
+    json_data = json.loads(data)
 
-    f = open(filename)
-    file_data = f.read()
-    f.close()
-    json_data = json.loads(file_data)
+    # f = open(filename)
+    # file_data = f.read()
+    # f.close()
+    # json_data = json.loads(file_data)
     tup_list = []
     state_dict = {}
     for data in json_data: 
@@ -128,10 +137,10 @@ def csv_out(data, file):
 #     # SETUP DATABASE AND TABLE
 #     cur, conn = setUpDatabase('weather.db')
 #     create_risk_table(cur, conn)
-#     add_data_from_json('risk_covid_data.json', cur, conn)
+#     add_data_from_json(cur, conn)
 #     #visualize_state_risk_data(0, cur, conn)
 #     data = visualize_state_risk_data(0, cur, conn)
-#     csv_out(data, "second_api.csv") 
+#     csv_out(data, "second_api.txt") 
     
 # if __name__ == "__main__":
 #     main()

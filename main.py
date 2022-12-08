@@ -56,7 +56,7 @@ def main():
     visualization_weather_data(cur, conn)
     #Lindsey
     create_risk_table(cur, conn)
-    add_data_from_json('risk_covid_data.json', cur, conn)
+    add_data_from_json(cur, conn)
     data = visualize_state_risk_data(0, cur, conn)
     csv_out(data, "second_api.txt") 
     #Kiran
